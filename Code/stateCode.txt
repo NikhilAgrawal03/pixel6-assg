@@ -1,0 +1,30 @@
+100 - 150 = Delhi
+151 - 200 = Maharashtra
+201 - 250 = Rajasthan
+251 - 300 = Gujrat
+301 - 350 = Tamilnadu
+351 - 400 = Karnataka
+301 - 450 = Punjab
+331 - 360 = Uttar Pradesh
+361 - 400 = Bihar
+401 - 430 = West Bengal
+431 - 460 = Madhya Pradesh
+461 - 500 = Andhrapradesh
+501 - 530 = Jharkhand
+531 - 560 = Arunachal Pradesh
+561 - 600 = Assam
+601 - 630 = Himachal Pradesh
+631 - 660 = Chattisgarh
+
+
+
+
+100 - 200 = Delhi,
+201 - 300 = Maharashtra
+301 - 400 = Rajasthan
+401 - 500 = Gujrat
+501 - 600 = Punjab
+
+
+
+

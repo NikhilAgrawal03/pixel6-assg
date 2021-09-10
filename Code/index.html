@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- Form for accepting Name, Email and Phone No -->
+    <div id="formpage">
+      <div id="formCard">
+        <h1>Contact Form</h1>
+        <form id="form">
+          <div class="fullname">
+            <label for="FullName">Full Name :</label>
+            <input type="text" name="fullname" id="fullname" required />
+            <i
+              id="clear_fullname"
+              class="far fa-times-circle"
+              style="cursor: pointer"
+            ></i>
+            <p id="name_err"></p>
+          </div>
+          <div class="email">
+            <label for="Email">Email :</label>
+            <input type="email" name="email" id="email" required />
+            <i
+              id="clear_email"
+              class="far fa-times-circle"
+              style="cursor: pointer"
+            ></i>
+            <p id="email_err"></p>
+          </div>
+          <div class="mobno">
+            <label for="MobNumber">Mob Number :</label>
+            <input
+              type="text"
+              name="mobno"
+              id="mobno"
+              maxlength="12"
+              style="display: inline"
+              required
+            />
+            <i
+              id="clear_mobno"
+              class="far fa-times-circle"
+              style="cursor: pointer"
+            ></i>
+            <p id="mob_err"></p>
+            <img
+              src="#"
+              alt="logo"
+              style="display: none"
+              id="logo"
+              height="35px"
+              width="35px"
+            />
+            <p id="mob_provider" style="display: inline-block"></p>
+            <p id="state" style="display: inline-block"></p>
+          </div>
+          <button type="submit" id="formSubmit">Submit</button>
+        </form>
+      </div>
+    </div>
+    <!-- form end  -->
+
+    <!-- form for accepting otp / verification page  -->
+    <div id="resultpage" style="display: none">
+      <p id="verifyMsg"></p>
+
+      <h4 id="otp_no"></h4>
+
+      <h4 id="ValidationSuccess"></h4>
+      <div id="otpformCard">
+        <form id="otpform">
+          <div>
+            <label for="otp">Enter OTP :</label>
+            <input type="text" name="otp" id="otpinput" maxlength="4" />
+            <p id="otp_err"></p>
+          </div>
+          <button type="submit" id="otpSubmit">Submit</button>
+        </form>
+      </div>
+    </div>
+    <!-- verification page end -->
+    <script src="./script.js"></script>
+  </body>
+</html>
