@@ -1,5 +1,6 @@
 const form = document.getElementById('form');
 const otpForm = document.getElementById('otpform');
+const otpSubmit = document.getElementById('otpSubmit');
 const otpInput = document.getElementById('otpinput');
 const fullName = document.getElementById('fullname');
 const email = document.getElementById('email');
@@ -60,6 +61,9 @@ mob_no.addEventListener('input', (e) => {
     if (mob_no.value.length > 3) {
       document.getElementById('mob_provider').innerHTML =
         'Invalid Service Provider';
+      // setTimeout(() => {
+      //   document.getElementById('mob_provider').innerHTML = '';
+      // }, 4500);
       throw 'invalid';
     }
   }
@@ -94,16 +98,29 @@ form.addEventListener('submit', (e) => {
     var name_message =
       'Fullname should contain min 2 words with min 4 alphabet Ex: John Snow';
     document.getElementById('name_err').innerHTML = name_message;
+    setTimeout(() => {
+      document.getElementById('name_err').innerHTML = '';
+    }, 3000);
   } else if (emailRegex.test(email.value) == false) {
     var email_message = 'email format Ex: abc21@gmail.com';
     document.getElementById('email_err').innerHTML = email_message;
+    setTimeout(() => {
+      document.getElementById('email_err').innerHTML = '';
+    }, 3000);
   } else if (
     mob_no.value === '' ||
     mob_no.value.length < 12 ||
-    mob_no.value.length > 12
+    mob_no.value.length > 12 ||
+    document.getElementById('mob_provider').innerHTML ==
+      'Invalid Service Provider'
   ) {
-    var mob_message = 'Mobile no should contain 10 numbers';
+    var mob_message =
+      'Mobile no should contain 10 numbers with valid service provider';
     document.getElementById('mob_err').innerHTML = mob_message;
+
+    setTimeout(() => {
+      document.getElementById('mob_err').innerHTML = '';
+    }, 3000);
   } else {
     document.getElementById('formpage').style.display = 'none';
     document.getElementById('resultpage').style.display = 'block';
@@ -114,13 +131,14 @@ form.addEventListener('submit', (e) => {
   if (fullnameRegex.test(fullName.value) && mob_no.value.length == 12) {
     document.getElementById('verifyMsg').innerHTML = `Dear ${firstName},
     Thank you for your inquiry. A 4 digit verification number has been sent to your phone 
-    number: ${mob_no.value}, please enter in the following box and submit for confirmation:`;
+    number:${mob_no.value}, please enter in the following box and submit for confirmation:`;
   }
 });
 
 const otp = Math.floor(1000 + Math.random() * 9000);
 document.getElementById('otp_no').innerHTML = `OTP : ${otp}`;
 
+let clickCount = 0;
 //on submit eventlistener for otp verification
 otpForm.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -135,8 +153,17 @@ otpForm.addEventListener('submit', (e) => {
   } else {
     e.preventDefault();
     console.log(otpInput.value);
-
     document.getElementById('otp_err').innerHTML = 'Invalid OTP';
+    setTimeout(() => {
+      document.getElementById('otp_err').innerHTML = '';
+    }, 2750);
     console.log('invalid otp');
+    otpSubmit.addEventListener('click', (e) => {
+      clickCount++;
+      console.log(clickCount);
+    });
+    if (clickCount > 3) {
+      window.open('http://pixel6.co/notfound', '_self');
+    }
   }
 });
