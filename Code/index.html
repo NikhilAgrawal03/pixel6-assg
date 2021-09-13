@@ -106,7 +106,19 @@
         <form id="otpform">
           <div>
             <label for="otp">Enter OTP :</label>
-            <input type="number" name="otp" id="otpinput" maxlength="4" />
+            <input
+              type="number"
+              name="otp"
+              id="otpinput"
+              required
+              maxlength="4"
+              onblur="otpErrorHandler()"
+            />
+            <i
+              id="clear_otp"
+              class="far fa-times-circle"
+              style="cursor: pointer"
+            ></i>
             <p id="otp_err"></p>
           </div>
           <button type="submit" id="otpSubmit">Submit</button>

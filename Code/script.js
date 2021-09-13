@@ -8,6 +8,7 @@ const mob_no = document.getElementById("mobno");
 const clearField_mob = document.getElementById("clear_mobno");
 const clearField_fullname = document.getElementById("clear_fullname");
 const clearField_email = document.getElementById("clear_email");
+const clearField_otp = document.getElementById("clear_otp");
 const reset_all = document.getElementById("resetall");
 
 //regex pattern in which full-name should be written
@@ -34,6 +35,12 @@ clearField_email.addEventListener("click", () => {
   email.value = "";
 });
 
+//clear fields on click
+clearField_otp.addEventListener("click", () => {
+  otpInput.value = "";
+});
+
+//clear all fields
 reset_all.addEventListener("click", () => {
   fullName.value = "";
   email.value = "";
@@ -115,6 +122,7 @@ mob_no.addEventListener("input", (e) => {
   // }
 });
 
+// error handling on blur start
 function nameErrorHandler() {
   if (fullName.value.length != 0) {
     if (fullnameRegex.test(fullName.value) == false) {
@@ -156,8 +164,10 @@ function mobileErrorHandler() {
     }
   }
 }
+// error handling on blur end
 
 //on submit eventlistener of form
+
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -186,6 +196,7 @@ form.addEventListener("submit", (e) => {
   const firstName = fullName.value.substr(0, fullName.value.indexOf(" "));
 
   //result page  code ---------------------------
+
   if (fullnameRegex.test(fullName.value) && mob_no.value.length == 12) {
     document.getElementById(
       "verifyMsg"
@@ -200,6 +211,28 @@ document.getElementById("otp_no").innerHTML = `OTP : ${otp}`;
 
 let clickCount = 0;
 //on submit eventlistener for otp verification
+
+// on input maxlength of otp is 4
+otpInput.addEventListener("input", (e) => {
+  const maxLength = 4;
+  if (e.target.value > maxLength) {
+    otpInput.value = e.target.value.slice(0, maxLength);
+  }
+});
+
+//otp error handling on blur
+function otpErrorHandler() {
+  if (otpInput.value.length != 0) {
+    if (otpInput.value != otp) {
+      console.log(otpInput.value);
+      document.getElementById("otp_err").innerHTML = "Invalid OTP";
+    } else {
+      document.getElementById("otp_err").innerHTML = "";
+    }
+  }
+}
+
+//on submit otp
 otpForm.addEventListener("submit", (e) => {
   e.preventDefault();
   if (otpInput.value == otp) {
@@ -214,9 +247,9 @@ otpForm.addEventListener("submit", (e) => {
     e.preventDefault();
     console.log(otpInput.value);
     document.getElementById("otp_err").innerHTML = "Invalid OTP";
-    setTimeout(() => {
-      document.getElementById("otp_err").innerHTML = "";
-    }, 2750);
+    // setTimeout(() => {
+    //   document.getElementById("otp_err").innerHTML = "";
+    // }, 2750);
     otpSubmit.addEventListener("click", (e) => {
       clickCount++;
       console.log(clickCount);
